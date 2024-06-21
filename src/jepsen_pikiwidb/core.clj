@@ -17,5 +17,6 @@
 (defn -main
   "Handles command line arguments. Can either run a test, or a web server for browing results"
   [& args]
-  (cli/run! (cli/single-test-cmd {:test-fn pikiwidb-test})
+  (cli/run! (merge (cli/single-test-cmd {:test-fn pikiwidb-test})
+                   (cli/serve-cmd))
             args))
