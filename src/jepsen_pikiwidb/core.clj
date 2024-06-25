@@ -57,7 +57,12 @@
       ;(info node "installing pikiwidb" (:version test))
       ;(let [bin (build-pikiwidb! test node)]))
       (info node "starting pikiwidb")
-      (cu/start-daemon! {} "/bin/pikiwidb" nil)
+      (cu/start-daemon! 
+        {:logfile "/pikiwidb.log"
+         :pidfile "/pikiwidb.pid"
+         :chdir "/root"} 
+        "/bin/pikiwidb" 
+        nil)
       (Thread/sleep 1000)
       (info node "started pikiwidb"))
 
