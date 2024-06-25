@@ -5,9 +5,10 @@
                     [control :as c]
                     [util :as util] ]
             [jepsen.os.ubuntu :as ubuntu]
+            [jepsen.control.util :as cu]
+            [slingshot.slingshot :refer [try+ throw+]]
             [clojure.string :as str]
             [clojure.java.shell :refer [sh]]
-            [slingshot.slingshot :refer [try+ throw+]]
             [clojure.tools.logging :refer [info warn]]))
 
 (def build-file
@@ -53,8 +54,12 @@
   [version]
   (reify jdb/DB
     (setup! [_ test node]
-      (info node "installing pikiwidb" (:version test))
-      (let [bin (build-pikiwidb! test node)]))
+      ;(info node "installing pikiwidb" (:version test))
+      ;(let [bin (build-pikiwidb! test node)]))
+      (info node "starting pikiwidb")
+      (cu/start-daemon! {} "/bin/pikiwidb" nil)
+      (Thread/sleep 1000)
+      (info node "started pikiwidb"))
 
     (teardown! [this test node]
       (info node "tearing down pikiwidb" (:version test))
@@ -76,3 +81,4 @@
   (cli/run! (merge (cli/single-test-cmd {:test-fn pikiwidb-test})
                    (cli/serve-cmd))
             args))
+
