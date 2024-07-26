@@ -5,7 +5,7 @@
              [control :as c]
              [util :as util :refer [parse-long]]]
             [jepsen.os.ubuntu :as ubuntu]
-            [jepsen.redis [client :as rc]]
+            [jepsen-pikiwidb [client :as rc]]
             [jepsen.tests.cycle.append :as append]
             [jepsen.control.util :as cu]
             [slingshot.slingshot :refer [try+ throw+]]

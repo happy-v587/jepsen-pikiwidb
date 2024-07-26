@@ -9,7 +9,7 @@
                     [util :as util :refer [parse-long]]]
             [jepsen.checker.timeline :as timeline]
             [jepsen.tests.cycle.append :as append]
-            [jepsen.redis [client :as rc]]
+            [jepsen-pikiwidb [client :as rc]]
             [taoensso.carmine :as car :refer [wcar]]
             [slingshot.slingshot :refer [try+ throw+]]))
 

@@ -13,7 +13,7 @@
                     [util :as util :refer [parse-long]]]
             [jepsen.control [net :as cn]
                             [util :as cu]]
-            [jepsen.redis [client :as rc]]
+            [jepsen-pikiwidb [client :as rc]]
             [jepsen.os.debian :as debian]
             [slingshot.slingshot :refer [try+ throw+]]))
 

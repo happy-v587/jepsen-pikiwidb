@@ -9,7 +9,7 @@
                     [util :as util]]
             [jepsen.nemesis [time :as nt]
                             [combined :as nc]]
-            [jepsen.redis [db :as rdb]]))
+            [jepsen-pikiwidb [db :as rdb]]))
 
 (defn member-nemesis
   "A nemesis for adding and removing nodes from the cluster. Options:
